@@ -1,0 +1,10 @@
+#include <stdio.h>
+
+int main() {
+    int x=38,*ptr=&x;
+    char name[]="madhu";
+    char *ptr1=name;
+    printf("%d bytes ", sizeof(name));
+    
+    return 0;
+}
