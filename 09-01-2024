@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+void swap_case(char *s) {
+    while (*s) {
+        if (*s >= 'a' && *s <= 'z') {
+            *s = *s - 'a' + 'A';
+        } else if (*s >= 'A' && *s <= 'Z') {
+            *s = *s - 'A' + 'a';
+        }
+        s++;
+    }
+}
+
+int main() {
+    char str[1000];
+    printf("Enter a string: ");
+    scanf("%[^\n]", str);
+    swap_case(str);
+    printf("String after case swap: %s\n", str);
+    return 0;
+}
