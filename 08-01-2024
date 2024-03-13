@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+    int N;
+    scanf("%d", &N);
+    int *myList = (int*)malloc(N * sizeof(int));
+    int size = 0;
+
+    for (int i = 0; i < N; i++) {
+        char operation[10];
+        scanf("%s", operation);
+        if (strcmp(operation, "insert") == 0) {
+            int index, value;
+            scanf("%d %d", &index, &value);
+            if (index >= 0 && index <= size) {
+                for (int j = size; j > index; j--) {
+                    myList[j] = myList[j - 1];
+                }
+                myList[index] = value;
+                size++;
+            }
+        } else if (strcmp(operation, "remove") == 0) {
+            int index;
+            scanf("%d", &index);
+            if (index >= 0 && index < size) {
+                for (int j = index; j < size - 1; j++) {
+                    myList[j] = myList[j + 1];
+                }
+                size--;
+            }
+        } else if (strcmp(operation, "append") == 0) {
+            int value;
+            scanf("%d", &value);
+            myList[size++] = value;
+        } else if (strcmp(operation, "sort") == 0) {
+            for (int j = 0; j < size - 1; j++) {
+                for (int k = j + 1; k < size; k++) {
+                    if (myList[j] > myList[k]) {
+                        int temp = myList[j];
+                        myList[j] = myList[k];
+                        myList[k] = temp;
+                    }
+                }
+            }
+        } else if (strcmp(operation, "pop") == 0) {
+            if (size > 0) {
+                size--;
+            }
+        } else if (strcmp(operation, "reverse") == 0) {
+            for (int j = 0; j < size / 2; j++) {
+                int temp = myList[j];
+                myList[j] = myList[size - j - 1];
+                myList[size - j - 1] = temp;
+            }
+        } else if (strcmp(operation, "print") == 0) {
+            for (int j = 0; j < size; j++) {
+                printf("%d ", myList[j]);
+            }
+            printf("\n");
+        } else {
+            printf("error!\n");
+        }
+    }
+
+    free(myList);
+    return 0;
+}
