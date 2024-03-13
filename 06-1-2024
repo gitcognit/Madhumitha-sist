@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+unsigned long hash(int n) {
+    unsigned long hash = 5381;
+    int c;
+
+    while ((c = *n++)) {
+        hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+    }
+
+    return hash;
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    int integer_list[n];
+
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &integer_list[i]);
+    }
+
+    unsigned long t = 0;
+    for (int i = 0; i < n; i++) {
+        t += hash(integer_list[i]);
+    }
+
+    printf("%lu\n", t);
+
+    return 0;
+}
