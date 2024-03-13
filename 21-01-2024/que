@@ -1,0 +1,15 @@
+
+Madhumitha S <madhuharini598@gmail.com>
+5:52 PM (0 minutes ago)
+to me
+
+#include <stdio.h>
+
+int main() {
+    int a, b;
+    scanf("%d", &a);
+    scanf("%d", &b);
+    printf("%d\n", a / b);
+    printf("%f\n", (float)a / b);
+    return 0;
+}
