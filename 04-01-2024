@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_STUDENTS 100
+
+struct Student {
+    char name[100];
+    float score;
+};
+
+int main() {
+    struct Student students[MAX_STUDENTS];
+    int num_students;
+    
+    // Input the number of students
+    scanf("%d", &num_students);
+    
+    // Input student names and scores
+    for (int i = 0; i < num_students; i++) {
+        scanf("%s %f", students[i].name, &students[i].score);
+    }
+    
+    // Find the second lowest score
+    float lowest_score = students[0].score;
+    float second_lowest_score = students[0].score;
+    for (int i = 1; i < num_students; i++) {
+        if (students[i].score < lowest_score) {
+            second_lowest_score = lowest_score;
+            lowest_score = students[i].score;
+        } else if (students[i].score < second_lowest_score && students[i].score != lowest_score) {
+            second_lowest_score = students[i].score;
+        }
+    }
+    
+    // Print student names with the second lowest score
+    for (int i = 0; i < num_students; i++) {
+        if (students[i].score == second_lowest_score) {
+            printf("%s\n", students[i].name);
+        }
+    }
+    
+    return 0;
+}
